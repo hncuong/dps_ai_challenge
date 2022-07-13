@@ -5,8 +5,9 @@ from flask import Flask, request, jsonify
 from inference import AccidentsInferer
 
 # Model filename
-MODEL_FILE = 'arma_model_2020_12_p6_q24.pickle'
-inferer = AccidentsInferer(model_file=MODEL_FILE)
+# MODEL_FILE = 'arma_model_2020_12_p6_q24.pickle'
+MODEL_FILE = 'ar_model_2020_12.pickle'
+inferer = AccidentsInferer(model_file=MODEL_FILE, model_type='ar')
 
 app = Flask(__name__)
 @app.route('/', methods=['GET'])

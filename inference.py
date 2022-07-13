@@ -1,11 +1,17 @@
 from statsmodels.tsa.arima.model import ARIMAResultsWrapper
+from statsmodels.tsa.ar_model import AutoRegResultsWrapper
+
 MONTH_PER_YEAR = 12
 
 class AccidentsInferer(object):
-    def __init__(self, model_file="arma_model_2020_12_p6_q24.pickle") -> None:
+    def __init__(self, model_file="arma_model_2020_12_p6_q24.pickle", model_type='arma') -> None:
         """ AR Model to predict number of accidents 
         """
-        self.model_predictor = ARIMAResultsWrapper.load(model_file)
+        if model_type == "arma":
+            self.model_predictor = ARIMAResultsWrapper.load(model_file)
+        else:
+            self.model_predictor = AutoRegResultsWrapper.load(model_file)
+
         self.last_data_year = 2020
         self.last_data_month = 12
         self.last_data_idx = self.last_data_year * MONTH_PER_YEAR + self.last_data_month
