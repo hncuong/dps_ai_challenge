@@ -34,4 +34,4 @@ def update_record():
         return jsonify({'err': "invalid request. Request must contains year and month from 1-2021."})
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
